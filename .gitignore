@@ -1,0 +1,5 @@
+# IPython checkpoints
+*.ipynb_checkpoints
+
+# Object files
+*.o
