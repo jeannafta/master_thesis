@@ -6,7 +6,7 @@ Below are some tips for using [FEniCS](https://fenicsproject.org/) with [Docker]
 
 ## Running FEniCS in Docker
 1. Running Python Scripts in Dolfinx/Dolfinx Container: Sequential and Parallel Programming
-- To create a new container named `PDM` that will have acess to the local folder  `models`, and will have 512 megabytes of shared memory for the Docker container:
+-To create a new container named `PDM` that will have acess to the local folder  `models`, and will have 512 megabytes of shared memory for the Docker container:
   > docker run -ti --name PDM -v $(pwd)/models:/root --shm-size=512m dolfinx/dolfinx:stable
 - To launch a terminal inside the container:
   - If the container has just been created, the terminal is launched automatically.
