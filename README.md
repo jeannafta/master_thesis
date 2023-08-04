@@ -6,19 +6,20 @@ Below are some tips for using [FEniCS](https://fenicsproject.org/) with [Docker]
 
 ## Running FEniCS in Docker
 1. Running Python Scripts in Dolfinx/Dolfinx Container: Sequential and Parallel Programming
--To create a new container named `PDM` that will have acess to the local folder  `models`, and will have 512 megabytes of shared memory for the Docker container:
+- To create a new container named `PDM` that will have acess to the local folder  `models`, and will have 512 megabytes of shared memory for the Docker container:
   > docker run -ti --name PDM -v $(pwd)/models:/root --shm-size=512m dolfinx/dolfinx:stable
 - To launch a terminal inside the container:
   - If the container has just been created, the terminal is launched automatically.
   - If the container has been restarted, the terminal needs to be explicitly initiated inside the container:
-   > docker exec -it PDM_python bash
-- To execute a Python script:
+   > docker exec -it PDM bash
+- To execute a Python script within the container terminal:
   > python3 script.py
-- To execute a Python script in parallel using multiple processes (in this case, 2 processes):
+- To execute a Python script in parallel within the container terminal using multiple processes (in this case, 2 processes):
   > mpirun -np 2 python3 script.py
 2. Running Jupyter Notebooks in Dolfinx/lab Container
 - To create a new container named `PDM` that will have acess to the local folder  `models`:
   > docker run --name PDM -p 8888:8888 -v $(pwd)/models:/root dolfinx/lab:stable
+- Select the kernel 'Python 3 (ipykernel)'
 
 3. General commands
 - To stop the container:
