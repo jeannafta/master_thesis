@@ -1,12 +1,12 @@
 # Master's project Jean Naftalski
 
-This directory provides all the codes that were developed for my Master's project.
+This directory provides all the codes that were developed for my Master's project. If needed, the scripts developed as part of my Master's project pre-study are also accessible at this [link](https://github.com/jeannafta/pre-study).
 
 Below are some tips for using [FEniCS](https://fenicsproject.org/) with [Docker](https://www.docker.com/).
 
 ## Running FEniCS in Docker
-1. Running Python Scripts in Dolfinx/Dolfinx Container: Sequential and Parallel Programming
-- To create a new container named `PDM` that will have acess to the local folder  `models`, and will have 512 megabytes of shared memory for the Docker container:
+**1.** Running **Python scripts** in `dolfinx/dolfinx` container: sequential and parallel programming
+- To create a new container named `PDM` that will have acess to the local folder  `models`, and will have 512 megabytes of shared memory for the container:
   > docker run -ti --name PDM -v $(pwd)/models:/root --shm-size=512m dolfinx/dolfinx:stable
 - To launch a terminal inside the container:
   - If the container has just been created, the terminal is launched automatically.
@@ -16,26 +16,24 @@ Below are some tips for using [FEniCS](https://fenicsproject.org/) with [Docker]
   > python3 script.py
 - To execute a Python script in parallel within the container terminal using multiple processes (in this case, 2 processes):
   > mpirun -np 2 python3 script.py
-2. Running Jupyter Notebooks in Dolfinx/lab Container
+
+**2.** Running **Jupyter Notebooks** in dolfinx/lab container
 - To create a new container named `PDM` that will have acess to the local folder  `models`:
   > docker run --name PDM -p 8888:8888 -v $(pwd)/models:/root dolfinx/lab:stable
-- Select the kernel 'Python 3 (ipykernel)'
+- Select the kernel `Python 3 (ipykernel)`
 
-3. General commands
+**3. Shared commands** for container management
 - To stop the container:
   > docker stop PDM
 - To restart the container:
   > docker restart PDM
-
-## Operations on containers
-- To list all containers (including stopped containers):
-  > docker container ls -a
-  Or
+- To remove the container (the container should be stopped first):
+  > docker rm PDM
+- To list all existing containers, including stopped containers:
   > docker ps -a
-- To remove a container:
-  > docker container rm container_ID
 
 
 ## Install other Python libraries inside a container
-Installing an additional library in a docker container is similar to installing a library in a Python virtual environment. For example one can use pip3 to install `pyvista` library:
+Installing an additional library in a Docker container is similar to installing a library in a Python virtual environment. 
+If using the `dolfinx/dolfinx` container, the terminal should be launched as indicated in Point 1. On the other hand, with the dolfinx/lab container (JupyterLab interface), the terminal can be directly opened from the interface. Once the terminal is accessed, libraries, for example `pyvista`, can be installed using the package manager `pip3`:
 > pip3 install pyvista
