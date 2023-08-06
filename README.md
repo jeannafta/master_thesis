@@ -1,6 +1,6 @@
 # Master's project Jean Naftalski
 
-This directory provides all the codes that were developed for my Master's project. If needed, the scripts developed as part of my Master's project pre-study are also accessible at this [link](https://github.com/jeannafta/pre-study).
+This directory provides most of the codes that were developed for my Master's project. If needed, the scripts developed as part of my Master's project pre-study are also accessible at this [link](https://github.com/jeannafta/pre-study).
 
 Below are some tips for using [FEniCS](https://fenicsproject.org/) with [Docker](https://www.docker.com/).
 
