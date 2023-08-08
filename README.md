@@ -1,6 +1,8 @@
 # Master's project Jean Naftalski
 
-This directory provides the principal codes that were developed for my Master's project. If needed, the scripts developed as part of my Master's project pre-study are also accessible at this [link](https://github.com/jeannafta/pre-study).
+This directory provides the principal codes that were developed for my Master's project. 
+The codes of the numerical modeling part are based on the [FEniCSx tutorial](https://jorgensd.github.io/dolfinx-tutorial/index.html#) authored by Jørgen S. Dokken.
+If needed, the scripts developed as part of my Master's project pre-study are also accessible at this [link](https://github.com/jeannafta/pre-study).
 
 Below are some tips for using [FEniCS](https://fenicsproject.org/) with [Docker](https://www.docker.com/).
 
