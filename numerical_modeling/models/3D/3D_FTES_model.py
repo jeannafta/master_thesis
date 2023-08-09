@@ -38,7 +38,7 @@ print("Reading is done.")
 # Geometrical parameters
 Dpipe = 0.001          # inner diameter of the pipe is 1mm
 # Experimental parameter
-Qinj = 0.25e-6/60*1/4  # flow rate injected by the pump (*1/4 because we only model 1/4 of the block)
+Qinj = 0.25e-6/60      # flow rate injected by the pump (*1/4 because we only model 1/4 of the block)
 
 
 ##############################################################################
@@ -92,7 +92,7 @@ xdmf.write_mesh(submesh)
 
 ## Finite element function space for pressure field
 
-U = FunctionSpace(submesh, ("CG", 4))  # Lagrange elements (degree 4)
+U = FunctionSpace(submesh, ("CG", 2))  # Lagrange quadratic elements (degree 2)
 
 
 ## Trial and test functions
@@ -141,7 +141,7 @@ print("Problem is solved.")
 ## Fluid flow (pressure gradient)
 
 print("Computing fluid velocity field from pressure field...")
-V = VectorFunctionSpace(submesh, ("CG", 3))
+V = VectorFunctionSpace(submesh, ("CG", 1))
 q_expr = fem.Expression(-ufl.grad(p_h), V.element.interpolation_points())
 q_sub = fem.Function(V)
 q_sub.interpolate(q_expr)
@@ -171,7 +171,7 @@ xdmf.write_mesh(mesh)
 ## Temporal parameters
 
 t = 0              # start time
-T = 1000*8*3600.    # final time
+T = 100*8*3600.    # final time
 num_steps = 200
 dt = T / num_steps # time step size
 
@@ -301,7 +301,7 @@ def transfer_submesh_data(u_parent: dolfinx.fem.Function, u_sub: dolfinx.fem.Fun
                     u_sub.x.array[s_dof * bs + j] = u_parent.x.array[p_dof * bs + j]
 
 # transfer solution of fluid flow to parent mesh
-Q = VectorFunctionSpace(mesh, ("CG", 3))
+Q = VectorFunctionSpace(mesh, ("CG", 1))
 q = Function(Q)
 q.x.array[:] = 0
 transfer_submesh_data(q, q_sub, entity_map, inverse=True)
