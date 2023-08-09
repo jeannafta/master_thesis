@@ -38,7 +38,7 @@ print("Reading is done.")
 # Geometrical parameters
 Dpipe = 0.001          # inner diameter of the pipe is 1mm
 # Experimental parameter
-Qinj = 0.25e-6/60      # flow rate injected by the pump (*1/4 because we only model 1/4 of the block)
+Qinj = 0.25e-6/60      # flow rate injected by the pump
 
 
 ##############################################################################
